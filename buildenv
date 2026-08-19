@@ -1,5 +1,5 @@
-# bump: nlohmann-json -version /NLOHMANN-JSON _VERSION="(.*)"/ https://github.com/nlohmann/json/releases/tag/v3.12.0|semver:*
-# NLOHMANN-JSON _VERSION="V.R.M"
+# bump: nlohmann-json-version /NLOHMANN_JSON_VERSION="(.*)"/ https://github.com/nlohmann/json/tags|re:#archive/refs/tags/v([\d\.]+)\.tar\.gz#$1#|semver:*
+NLOHMANN_JSON_VERSION="3.12.0"
 
 ###
 ### Build control file for the nlohmann-json  port
@@ -12,7 +12,7 @@ export ZOPEN_PROJECT_NAME="nlohmann-json"
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_STABLE_URL="https://github.com/nlohmann/json.git"
 export ZOPEN_STABLE_DEPS="cmake make"
-export ZOPEN_STABLE_TAG="v3.12.0"
+export ZOPEN_STABLE_TAG="v${NLOHMANN_JSON_VERSION}"
 export ZOPEN_DEV_URL="https://github.com/nlohmann/json/archive/refs/heads/develop.tar.gz"
 export ZOPEN_DEV_DEPS="cmake"
 export ZOPEN_CATEGORIES="security development language ai core utilities editor source_control"
@@ -52,7 +52,7 @@ zopen_check_results() {
 }
 
 zopen_get_version() {
-  echo "1.0.0" # Modify to echo the version of your tool/library
+  echo "${NLOHMANN_JSON_VERSION}"
 }
 
 
